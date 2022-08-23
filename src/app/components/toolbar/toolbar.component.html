@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>ToDoList</span>
+
+  <button *ngIf="isLogged()" mat-button routerLink="/tarefas" style="margin-left: 20px;">Tarefas</button>
+  <button *ngIf="isLogged()" mat-button routerLink="/preferences">Preferências</button>
+
+  <span class="spacer"></span>
+  <button *ngIf="!isLogged()" mat-button routerLink="/register">Registre-se</button>
+  <button *ngIf="!isLogged()" mat-button routerLink="/login">Login</button>
+
+  <mat-form-field *ngIf="isLogged()" appearance="fill" color="primary">
+    <input matInput [(ngModel)]="search" placeholder="Pesquisar"> 
+  </mat-form-field>  
+  <button *ngIf="isLogged()" mat-button (click)="pesquisar()"><mat-icon>search</mat-icon></button>
+
+  <button *ngIf="isLogged()" mat-button [matMenuTriggerFor]="menu">
+    {{ getUsername() }}
+    <mat-icon>arrow_drop_down</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/meusdados">Meus dados</button>
+    <button mat-menu-item (click)="logout()">Sair</button>
+  </mat-menu>
+
+</mat-toolbar>

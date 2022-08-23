@@ -1,0 +1,23 @@
+<app-breadcrumb [caminhoList]="['Tarefa', tarefa?.id != null ? 'Editar': 'Novo']"></app-breadcrumb>
+
+<form class="form-column" [formGroup]="tarefaForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="data">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="field-full-width">
+        <mat-label>Nome</mat-label>
+        <input type="text" matInput formControlName="nome" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="field-full-width">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput formControlName="descricao"></textarea>
+    </mat-form-field>
+    <mat-checkbox formControlName="done">Concluído?</mat-checkbox>
+    <div class="buttons">
+        <button type="button" (click)="ok()" mat-raised-button color="primary" class="button">OK</button>
+        <button type="button" (click)="cancelar()" mat-raised-button color="primary" class="button">Cancelar</button>
+    </div>
+</form>

@@ -1,0 +1,20 @@
+<mat-card class="login">
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+        <form class="form-column" [formGroup]="loginForm" (ngSubmit)="ok()">
+            <mat-form-field appearance="fill" class="field-full-width">
+                <mat-label>E-mail</mat-label>
+                <input type="text" matInput placeholder="pat@example.com" formControlName="email" required>
+                <mat-error *ngIf="getEmail().invalid">{{getErrorEmail()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="field-full-width">
+                <mat-label>Senha</mat-label>
+                <input type="password" matInput formControlName="senha" required>
+                <mat-error *ngIf="getSenha().invalid">{{getErrorSenha()}}</mat-error>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button type="button" (click)="ok()" mat-raised-button color="primary">OK</button>
+    </mat-card-actions>
+</mat-card>

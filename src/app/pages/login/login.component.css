@@ -1,0 +1,17 @@
+.form-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.field-full-width {
+    width: 100%;
+}
+
+.login {
+    width: 40%;
+    margin: auto;
+    margin-top: 20px;
+}
+  

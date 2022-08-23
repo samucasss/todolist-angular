@@ -1,0 +1,19 @@
+<app-breadcrumb [caminhoList]="['Preferências', 'Editar']"></app-breadcrumb>
+
+<form class="form-column" [formGroup]="preferenciasForm">
+    <mat-form-field appearance="fill">
+        <mat-label>Tipo filtro</mat-label>
+        <mat-select formControlName="tipoFiltro">
+          <mat-option>Selecione</mat-option>
+          <mat-option *ngFor="let tipoFiltro of tipoFiltroList" [value]="tipoFiltro.id">
+            {{tipoFiltro.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>    
+    <mat-checkbox formControlName="done">Concluído?</mat-checkbox>
+    <div class="buttons">
+      <button type="button" (click)="ok()" mat-raised-button color="primary" class="button">OK</button>
+      <button type="button" (click)="remove()" mat-raised-button color="primary" class="button">Excluir</button>
+    </div>
+</form>
+

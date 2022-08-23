@@ -1,0 +1,71 @@
+<mat-card>
+    <mat-card-content>
+        <div style="margin-bottom: -20px;">
+            <button *ngIf="!tarefaListManager.isEdit()" type="button" (click)="novo()" mat-raised-button
+                color="primary">Novo</button>
+
+            <div class="filter">
+                <form [formGroup]="filterForm">
+                    <mat-form-field appearance="fill" class="filter-select">
+                        <mat-label>Tipo filtro</mat-label>
+                        <mat-select formControlName="tipoFiltro" (selectionChange)="filter()">
+                            <mat-option *ngFor="let tipoFiltro of tipoFiltroList" [value]="tipoFiltro.id">
+                                {{tipoFiltro.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-checkbox formControlName="done" (change)="filter()">Concluído?</mat-checkbox>
+                </form>
+            </div>
+        </div>
+
+        <app-tarefa-form *ngIf="tarefaListManager.isEdit()" [tarefa]="tarefaListManager.getModelAtual()"
+            (cancelarEmitter)="cancelar()" (saveEmitter)="save($event)" (updateEmitter)="update($event)">
+        </app-tarefa-form>
+
+        <section *ngIf="!tarefaListManager.isEdit()">
+            <app-breadcrumb [caminhoList]="['Tarefa', 'Listagem']"></app-breadcrumb>
+
+            <table mat-table [dataSource]="tarefaListManager.getTarefaFilterList()" 
+                class="mat-elevation-z8">
+
+                <ng-container matColumnDef="data">
+                    <th mat-header-cell *matHeaderCellDef> Data </th>
+                    <td mat-cell *matCellDef="let element"> {{element.getDataFormatada()}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="nome">
+                    <th mat-header-cell *matHeaderCellDef> Nome </th>
+                    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="descricao">
+                    <th mat-header-cell *matHeaderCellDef> Descrição </th>
+                    <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="acoes">
+                    <th mat-header-cell *matHeaderCellDef> Ações </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button *ngIf="!element.done" mat-mini-fab color="primary" mat-icon-button
+                            matTooltip="Concluir tarefa" class="button" (click)="done(element)">
+                            <mat-icon>done</mat-icon>
+                        </button>
+                        <button mat-mini-fab color="primary" mat-icon-button matTooltip="Editar tarefa" class="button"
+                            (click)="editar(element)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-mini-fab color="primary" mat-icon-button matTooltip="Excluir tarefa"
+                            (click)="remove(element)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+        </section>
+    </mat-card-content>
+</mat-card>

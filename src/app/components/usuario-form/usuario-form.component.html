@@ -1,0 +1,21 @@
+<form class="form-column" [formGroup]="usuarioForm">
+    <mat-form-field appearance="fill" class="field-full-width">
+        <mat-label>Nome</mat-label>
+        <input type="text" matInput formControlName="nome" required>
+        <mat-error *ngIf="getNome().invalid">{{getErrorNome()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="field-full-width">
+        <mat-label>E-mail</mat-label>
+        <input type="text" matInput placeholder="pat@example.com" formControlName="email" required>
+        <mat-error *ngIf="getEmail().invalid">{{getErrorEmail()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="field-full-width">
+        <mat-label>Senha</mat-label>
+        <input type="password" matInput formControlName="senha" required>
+        <mat-error *ngIf="getSenha().invalid">{{getErrorSenha()}}</mat-error>
+    </mat-form-field>
+    <div>
+        <button type="button" (click)="ok()" mat-raised-button color="primary" class="button">OK</button>    
+        <button type="button" (click)="remove()" mat-raised-button color="primary" class="button">Excluir</button>
+    </div>
+</form>

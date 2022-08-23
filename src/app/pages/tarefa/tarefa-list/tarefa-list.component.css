@@ -1,0 +1,25 @@
+table {
+    width: 100%;
+}
+
+.mat-row:hover .mat-cell {
+    background: whitesmoke;
+}
+
+.button {
+    margin-right: 5px;
+}
+
+.filter {
+    display: flex; 
+    justify-content: flex-end; 
+    margin-top: -40px;
+}
+
+.filter-select {
+    margin-right: 10px;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}

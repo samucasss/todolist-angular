@@ -54,9 +54,9 @@ export class TarefaListComponent implements OnInit {
   }
 
   private findAllTarefas(): void {
-    const periodoEssaSemana: Periodo = this.findPeriodoEssaSemana();
+    const periodoTarefas: Periodo = this.findPeriodoAllTarefas();
 
-    this.tarefaService.findAll(periodoEssaSemana.inicio, periodoEssaSemana.fim)
+    this.tarefaService.findAll(periodoTarefas.inicio, periodoTarefas.fim)
       .subscribe(objList => {
         const tarefaList = objList.map(obj => new Tarefa(obj));
         this.tarefaListManager.setModelList(tarefaList);
@@ -80,15 +80,13 @@ export class TarefaListComponent implements OnInit {
       });
   }
 
-  private findPeriodoEssaSemana(): Periodo {
+  private findPeriodoAllTarefas(): Periodo {
     const hoje = moment().startOf('day')
-    const domingo = moment(hoje).isoWeekday(0)
-    const sabado = moment(hoje).isoWeekday(6)
 
-    const ultimoSabado = moment(domingo).add(-1, 'days')
-    const proximoDomingo = moment(sabado).add(1, 'days')
+    const start = moment(hoje).add(-10, 'days')
+    const end = moment(hoje).add(10, 'days')
 
-    return { inicio: ultimoSabado.toDate(), fim: proximoDomingo.toDate() }
+    return { inicio: start.toDate(), fim: end.toDate() }
   }
 
   private success(): void {

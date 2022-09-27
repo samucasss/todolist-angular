@@ -81,7 +81,7 @@ export class LoginComponent {
     this.auth.autentica(email.value, senha.value)
       .subscribe({
         next: (success) => {
-          this.router.navigateByUrl('/')
+          this.router.navigateByUrl('/tarefas')
         },
         error: (e) => {
           console.log('erro: ' + JSON.stringify(e))

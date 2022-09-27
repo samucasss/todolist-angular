@@ -150,7 +150,7 @@ export class UsuarioFormComponent implements OnInit {
     this.auth.autentica(email, senha)
       .subscribe({
         next: (success) => {
-          this.router.navigateByUrl('/')
+          this.router.navigateByUrl('/tarefas')
         },
         error: (e) => {
           console.log('erro: ' + JSON.stringify(e))

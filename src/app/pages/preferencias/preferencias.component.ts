@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { ConfirmDialogComponent } from 'src/app/components/confirm-dialog/confirm-dialog.component';
 import { Enum, TipoFiltroEnum } from 'src/app/models/filtro/tipoFiltroEnum';
 import { Preferencias } from 'src/app/models/preferencias';
@@ -21,7 +22,7 @@ export class PreferenciasComponent implements OnInit {
   });
 
   constructor(private preferenciasService: PreferenciasService, private _snackBar: MatSnackBar, 
-    private dialog: MatDialog) { }
+    private dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
     this.preferenciasService.get().subscribe(preferencias => {
@@ -58,6 +59,7 @@ export class PreferenciasComponent implements OnInit {
         .subscribe({
           next: (obj) => {
             this.success();
+            this.router.navigateByUrl('/tarefas')
           },
           error: (e) => {
             console.log('erro: ' + JSON.stringify(e))
@@ -88,6 +90,8 @@ export class PreferenciasComponent implements OnInit {
 
         this.preferenciasForm.controls.tipoFiltro.setValue('');
         this.preferenciasForm.controls.done.setValue(false);
+
+        this.router.navigateByUrl('/tarefas')
       },
       error: (e) => {
         console.log('erro: ' + JSON.stringify(e))

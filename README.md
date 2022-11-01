@@ -1,6 +1,6 @@
 # TodolistAngular
 
-Implementação do frontend da aplicação ToDoList com Angular.
+Implementação do frontend da aplicação ToDoList com Angular. Tecnologias utilizadas: Angular 14 com Material components, JWT authentication.
 
 Aplicação ToDoList:
 

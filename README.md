@@ -1,27 +1,37 @@
 # TodolistAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.1.
+Implementação do frontend da aplicação ToDoList com Angular.
 
-## Development server
+Aplicação ToDoList:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+O objetivo do sistema é realizar o acompanhamento de tarefas diárias. 
 
-## Code scaffolding
+Funcionalidades:
+1) Registro de usuários 
+Permite o registro de usuários no sistema através dos seguintes campos: Nome, E-mail e Senha.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2) Login do usuário
+Permite o login do usuário no sistema.
 
-## Build
+3) Alteração de dados do usuário logado
+Permite que o usuário logado altere seus dados.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+4) Exclusão do usuário logado
+Permite que o usuário logado exclua seus dados do sistema.
 
-## Running unit tests
+5) Cadastro, alteração e exclusão de preferências do usuário logado  
+Permite que o usuário logado informe o tipo de filtro padrão para a exibição das tarefas (Todos, Hoje, Amanhã e Semana) e se deve exibir as tarefas concluídas ou não.
+Esse valores podem ser alterados ou excluídos.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+6) Listagem de tarefas
+Exibir a listagem de tarefas de acordo com as preferências definidas pelo usuário ou por padrão todas as tarefas não concluídas.
 
-## Running end-to-end tests
+7) Cadastro, alteração e exclusão de tarefas
+Permite que o usuário logado cadastre uma nova tarefa através dos seguintes campos: Data, Nome, Descrição e se concluída ou não.
+Uma tarefa pode ser alterada ou excluída.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+8) Pesquisa de tarefas
+Permite que o usuário logado realize uma pesquisa na listagem de tarefas cadastradas pelo nome ou parte do nome.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+9) Sair do sistema
+Permite que o usuário se deslogue do sistema
